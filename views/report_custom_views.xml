@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_custom">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report.external_layout">
+                    <!-- Call original view -->
+                    <!--<t t-call="account.report_invoice_document" t-lang="o.partner_id.lang"/>-->
+                    <!-- Or your own template -->
+                    <t t-call="report_custom.report_custom_new_layout" t-lang="o.partner_id.lang" />
+                </t>
+            </t>
+        </t>
+    </template>
+    <!-- Custom Header -->
+    <template id="report_custom_header" inherit_id="report.external_layout_header">
+        <xpath expr="//div[@class='header']" position="replace">
+            <div class="header">
+                <h1>Custom Header</h1>
+            </div>
+        </xpath>
+    </template>
+     <!-- Custom Footer -->
+    <template id="report_custom_footer" inherit_id="report.external_layout_footer">
+        <xpath expr="//div[@class='footer']" position="replace">
+            <div class="footer">
+                <h1>Custom Footer</h1>
+            </div>
+        </xpath>
+    </template>
+     <!-- Custom Content -->
+    <template id="report_custom_new_layout">
+        <div class="page">
+            <h1>Custom report</h1>
+        </div>
+    </template>
+</odoo>
