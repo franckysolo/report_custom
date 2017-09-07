@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Custom style -->
+    <template id="report_custom_assets" name="report_custom_assets" inherit_id="report.assets_pdf">
+        <!-- If using css -->
+        <!--<xpath expr="link[last()]" position="after">-->
+        <!--<link href="/report_custom/static/src/css/report_custom.css" rel="stylesheet" type="text/css"/>-->
+        <!--</xpath>-->
+        <!-- If using less -->
+        <xpath expr="link[last()]" position="after">
+            <link href="/report_custom/static/src/less/report_custom.less" rel="stylesheet" type="text/less"/>
+        </xpath>
+    </template>
+    <!-- Custom report layout -->
     <template id="report_custom">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="report.external_layout">
+                    <!-- Setting some vars -->
+                    <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
+                    <t t-set="company" t-value="o.company_id" />
                     <!-- Call original view -->
                     <!--<t t-call="account.report_invoice_document" t-lang="o.partner_id.lang"/>-->
                     <!-- Or your own template -->
-                    <t t-call="report_custom.report_custom_new_layout" t-lang="o.partner_id.lang" />
+                    <t t-call="report_custom.report_custom_new_layout" t-lang="o.partner_id.lang"/>
                 </t>
             </t>
         </t>
@@ -20,7 +35,7 @@
             </div>
         </xpath>
     </template>
-     <!-- Custom Footer -->
+    <!-- Custom Footer -->
     <template id="report_custom_footer" inherit_id="report.external_layout_footer">
         <xpath expr="//div[@class='footer']" position="replace">
             <div class="footer">
@@ -28,10 +43,22 @@
             </div>
         </xpath>
     </template>
-     <!-- Custom Content -->
+    <!-- Custom Content -->
     <template id="report_custom_new_layout">
         <div class="page">
-            <h1>Custom report</h1>
+            <t t-call="report_custom.report_custom_watermark"/>
+            <h1>Custom report for <span t-esc="company.name"/></h1>
+            <div class="oe_structure"/>
+            <p>This a paragraph</p>
+            <div class="oe_structure"/>
+            <p>This an another paragraph</p>
+            <div class="oe_structure"/>
+            <p style="page-break-before:always;"/>
+            <t t-call="report_custom.static_cgv_document"/>
         </div>
+    </template>
+    <!-- Background watermark image @see report_custom.less -->
+    <template id="report_custom_watermark">
+        <div class="watermark"/>
     </template>
 </odoo>

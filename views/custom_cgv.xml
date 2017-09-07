@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="static_cgv_document">
+            <t t-call="report_custom.report_custom_watermark"/>
+            <div class="row cgv">
+                <div class="col-xs-12">
+                    <h2>My custom <span t-esc="o.company_id.name"/> cgv part 1</h2>
+                    <ol>
+                        <li>
+                            <h3>Chapter</h3>
+                            <ol>
+                                <li>First point</li>
+                                <li>Second point</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h3>Chapter</h3>
+                            <ol>
+                                <li>First point</li>
+                                <li>Second point</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h3>Chapter</h3>
+                            <ol>
+                                <li>First point</li>
+                                <li>Second point</li>
+                            </ol>
+                        </li>
+                    </ol>
+                    <h2>My custom cgv part 2</h2>
+                    <ol>
+                        <li>
+                            <h3>Chapter</h3>
+                            <ol>
+                                <li>First point</li>
+                                <li>Second point</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h3>Chapter</h3>
+                            <ol>
+                                <li>First point</li>
+                                <li>Second point</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h3>Chapter</h3>
+                            <ol>
+                                <li>First point</li>
+                                <li>Second point</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <p style="page-break-after:always;"/>
+
+        </template>
+    </data>
+</odoo>

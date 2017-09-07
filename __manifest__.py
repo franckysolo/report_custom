@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "report_custom",
     'sequence': 1,
@@ -18,16 +17,22 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base_setup', 'report', 'sale'],
+    'depends': ['base', 'report', 'sale'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        # 'data/custom_paperformat.xml',
         'views/report_custom_action.xml',
         'views/report_custom_views.xml',
+        'views/custom_cgv.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         # 'demo/demo.xml',
     ],
 }
+# -*- coding: utf-8 -*-
+
+
+
